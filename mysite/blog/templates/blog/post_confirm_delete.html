@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% block title %}
+  Object_confirm_delete
+{% endblock %}
+{% block content %}
+  Entry_onfirm_delete Page
+  <form method="POST">
+    {% csrf_token %}
+    <p>Are you sure that you want to delete {{ object }}?</p>
+    <input type="submit" class="btn btn-danger" value="Confirm">
+  </form>
+{% endblock %}

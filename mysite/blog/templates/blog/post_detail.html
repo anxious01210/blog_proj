@@ -1,0 +1,49 @@
+{% extends "blog/base.html" %}
+{% block title %}
+  detail
+{% endblock %}
+{% block content %}
+  Detail Page
+  <h1 class="posttitle loader">{{ post.title }}</h1>
+  {% if post.published_date %}
+    <div class="date postdate">
+      {{ post.published_date }}
+    </div>
+
+  {% else %}
+
+  <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+
+  {% endif %}
+
+  {# Since we are going to use the medium JavaScript editor we filter it by |safe to remove the <br> tags.  If there is a line break there the html also is going to call the line break there. #}
+  <p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
+
+  {# If the user is authenticated then we want him to be able to edite/delete the post. #}
+  {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"> Edit  <i class="fas fa-heart"></i> </a>
+    <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}"> Remove  <i class="fas fa-bars"></i> </a>
+  {% endif %}
+  {# # A url that allows us to add comments. #}
+  <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
+  {# The comments list #}
+  <div class="container">
+    {% for comment in post.comments.all %}
+      <br>
+        {% if user.is_authenticated or comment.approved_comment %}
+          {{ comment.create_date }}
+            {% if not comment.approved_comment %}
+              <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"> Delete  <i class="fas fa-heart"></i> </span> </a>
+              <a class="btn btn-primary" href="{% url 'comment_approve' pk=comment.pk %}"> Approve  <i class="fas fa-bars"></i> </span> </a>
+            {% endif %}
+              <p> {{ comment.text|safe|linebreaks }}</p>
+              <p> Posted By: {{ comment.author }}</p>
+
+        {% endif %}
+        {% empty %}
+          <p>No Comments! </p>
+
+    {% endfor %}
+  </div>
+
+{% endblock %}
