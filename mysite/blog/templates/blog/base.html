@@ -15,24 +15,28 @@
 
 
     <!-- Medium Style Editor -->
-    <link rel="stylesheet" href="css/medium-editor.css"> <!-- Core -->
-    <link rel="stylesheet" href="css/themes/default.css"> <!-- or any other theme -->
+    {# <link rel="stylesheet" href="static/css/medium-editor.css"> <!-- Core --> #}
+    {# <link rel="stylesheet" href="static/css/themes/default.css"> <!-- or any other theme --> #}
+
+    <!-- Medium Style Editor -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
 
     <!-- Custom CSS , which normally goes after all the other css calls -->
-    <link rel="stylesheet" href="css/blog.css">
+    {# <link rel="stylesheet" href="static/css/blog.css"> #}
 
-    <!-- Fonts -->
+    <!-- Fonts
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap" rel="stylesheet">
-
+    -->
 
   </head>
-  <body class="loader">
+  <body >
     <!-- NAVBAR -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark loader">
       <a class="navbar-brand" href="{% url 'post_list' %}">MoPSN</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

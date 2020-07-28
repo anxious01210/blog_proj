@@ -16,7 +16,7 @@
           <p>Published on: {{ post.published_date|date:"D M Y" }}</p>
         </div>
          {# Injecting the comments count, by calling the count attribute off of post.approved_comment. #}
-        <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+        <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_commentz.count }}</a>
       </div>
     {% endfor %}
 

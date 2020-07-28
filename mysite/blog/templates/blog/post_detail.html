@@ -12,7 +12,7 @@
 
   {% else %}
 
-  <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+  <a class="btn btn-success" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
 
   {% endif %}
 
@@ -24,7 +24,8 @@
     <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"> Edit  <i class="fas fa-heart"></i> </a>
     <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}"> Remove  <i class="fas fa-bars"></i> </a>
   {% endif %}
-  {# # A url that allows us to add comments. #}
+  <hr>
+  {# A url that allows us to add comments. #}
   <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
   {# The comments list #}
   <div class="container">
@@ -33,7 +34,7 @@
         {% if user.is_authenticated or comment.approved_comment %}
           {{ comment.create_date }}
             {% if not comment.approved_comment %}
-              <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"> Delete  <i class="fas fa-heart"></i> </span> </a>
+              <a class="btn btn-warning" href="{% url 'comment_remove' pk=comment.pk %}"> Delete  <i class="fas fa-heart"></i> </span> </a>
               <a class="btn btn-primary" href="{% url 'comment_approve' pk=comment.pk %}"> Approve  <i class="fas fa-bars"></i> </span> </a>
             {% endif %}
               <p> {{ comment.text|safe|linebreaks }}</p>
